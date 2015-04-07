@@ -24,10 +24,10 @@ function loadScript() {
 window.onload = loadScript;
 
 // Venue ID's are provided by foursquare.com
-var model = [
+var initialPlaces = [
 	{
 		name: 'Soda Bar',
-		foursquareID: '4075e780f964a52056f21ee3',
+		foursquareID: '4075e780f964a52056f21ee3'
 	},
 	{
 		name: 'Brooklyn Roasting Co.'
@@ -36,17 +36,25 @@ var model = [
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
 
-
+/*
 $.getJSON(foursquareApi, function(data){
 	$
 })
+*/
+
+// Here defining a "Place" so that the ViewModel can connect to the Model...
+
+var Place = function(data) {
+	this.name = ko.observable(data.name);
+	this.foursquareID = ko.observable(data.foursquareID);
+};
 
 var ViewModel = function() {
 	var self = this;
 
 	this.placeList = ko.observableArray([]);
 
-	model.forEach(function(placeItem){
+	initialPlaces.forEach(function(placeItem){
 		self.placeList.push( new Place(placeItem));
 	});
 
@@ -55,8 +63,6 @@ var ViewModel = function() {
 	this.setPlace = function(clickedPlace) {
 		self.currentPlace(clickedPlace);
 	};
-
-	// TRYING OUT YELP API...SHOULD THIS GO HERE OR IN OCTOPUS?????????
 };
 
 ko.applyBindings(new ViewModel());

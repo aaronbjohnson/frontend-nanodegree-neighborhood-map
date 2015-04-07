@@ -15,7 +15,7 @@ body {
 	margin: 5px;
 }
 
-.venues {
+#places {
 	position: fixed;
 	float: left;
 	top: 0;
@@ -25,4 +25,13 @@ body {
 	border-style: double;
 	outline: 2px;
 	margin: 5px;
+	padding-top: 5px;
+}
+
+#place-list {
+	padding: 5px;
+}
+
+#place {
+	float: left;
 }
