@@ -11,12 +11,19 @@
 </head>
 
 <body>
-	<div id="map-canvas">
+	<div class="map" id="map-canvas"></div>
 
+	<div class="venues">
+		<ul id="place-list" data-bind="foreach: placeList">My Favorite Spots
+			<li data-bind="text: $data.name, click: $parent.setPlace"></li>
+		</ul>
 	</div>
+
+
 
 	<script type="text/javascript" src="develop/js/app.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="develop/js/lib/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="develop/js/lib/jquery-1.11.2.js"></script>
 </body>
 </html>

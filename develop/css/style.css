@@ -10,5 +10,19 @@ body {
 
 #map-canvas {
 	height: 100%;
-	width: 100%;
+	float: left;
+	width: 70%;
+	margin: 5px;
+}
+
+.venues {
+	position: fixed;
+	float: left;
+	top: 0;
+	right: 0;
+	width: 25%;
+	height: 50px;
+	border-style: double;
+	outline: 2px;
+	margin: 5px;
 }
