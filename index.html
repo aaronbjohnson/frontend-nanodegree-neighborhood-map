@@ -13,10 +13,11 @@
 <body>
 	<div class="map" id="map-canvas"></div>
 
-	<div id="places">My Favorite Spots
-		<ul id="place-list" data-bind="foreach: placeList">
-			<li data-bind="text: $data.name, click: $parent.setPlace"></li>
-		</ul>
+	<div id="places">
+		<h2>My Favorite Places</h2>
+		<div id="place-list" data-bind="foreach: placeList">
+			<h3 data-bind="text: $data.name, click: $parent.setPlace"></h3>
+		</div>
 	</div>
 
 	<div id="place" data-bind="with: currentPlace">
