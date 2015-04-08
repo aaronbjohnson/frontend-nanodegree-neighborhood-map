@@ -5,11 +5,29 @@
 function initMap() {
 	var mapOptions = {
 		center: { lat: 40.675087, lng: -73.975524},
-		zoom: 13
+		zoom: 12
 	};
 
-	var map = new google.maps.Map(document.getElementById('map-canvas'),
-		mapOptions);
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	var infowindow = new google.maps.InfoWindow;
+
+	var marker, i;
+
+	for (i = 0; i < initialPlaces.length; i++) {
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng(initialPlaces[i].latitude, initialPlaces[i].longitude),
+			title: initialPlaces[i].name,
+			map: map
+		});
+
+		google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+				infowindow.setContent(initialPlaces[i].infoA);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+	};
 
 	google.maps.event.addDomListener(window, 'load', initMap);
 };
@@ -17,7 +35,7 @@ function initMap() {
 function loadScript() {
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
-	script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '&signed_in=true&callback=initMap';
+	script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCYXJZc_ouALNulqbg9ZivoqNYDd2qJfVY&libraries=places' + '&signed_in=true&callback=initMap';
 	document.body.appendChild(script);
 };
 
@@ -27,10 +45,16 @@ window.onload = loadScript;
 var initialPlaces = [
 	{
 		name: 'Soda Bar',
-		foursquareID: '4075e780f964a52056f21ee3'
+		foursquareID: '4075e780f964a52056f21ee3',
+		latitude: '40.678396',
+		longitude: '-73.968349',
+		infoA: 'Thing 1'
 	},
 	{
-		name: 'Brooklyn Roasting Co.'
+		name: 'Brooklyn Roasting Co.',
+		latitude: '40.704334',
+		longitude: '-73.986524',
+		infoA: 'Thing 2'
 	}
 ];
 
@@ -63,6 +87,11 @@ var ViewModel = function() {
 	this.setPlace = function(clickedPlace) {
 		self.currentPlace(clickedPlace);
 	};
+
+	// Here is the new stuff added on to ViewModel...map and stuff
+
+	// http://stackoverflow.com/questions/15531390/adding-array-of-markers-in-google-map
+	//...all was moved to initmap
 };
 
 ko.applyBindings(new ViewModel());
