@@ -23,13 +23,22 @@ function initMap() {
 
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
-				infowindow.setContent(initialPlaces[i].infoA);
+				infowindow.setContent(initialPlaces[i].name);
 				infowindow.open(map, marker);
 			}
 		})(marker, i));
+
+		// Push the marker to the 'markers' array
+		markers.push(marker);
 	};
 
 	google.maps.event.addDomListener(window, 'load', initMap);
+};
+
+// Triggers the marker click, 'id' is the reference index to the 'markers' array.
+// http://stackoverflow.com/questions/18333679/google-maps-open-info-window-after-click-on-a-link
+function myClick(id) {
+	google.maps.event.trigger(markers[id], 'click');
 };
 
 function loadScript() {
@@ -41,24 +50,26 @@ function loadScript() {
 
 window.onload = loadScript;
 
+var markers = [];
+
+var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
+
 // Venue ID's are provided by foursquare.com
 var initialPlaces = [
 	{
 		name: 'Soda Bar',
 		foursquareID: '4075e780f964a52056f21ee3',
 		latitude: '40.678396',
-		longitude: '-73.968349',
-		infoA: 'Thing 1'
+		longitude: '-73.968349'
 	},
 	{
 		name: 'Brooklyn Roasting Co.',
 		latitude: '40.704334',
-		longitude: '-73.986524',
-		infoA: 'Thing 2'
+		longitude: '-73.986524'
 	}
 ];
 
-var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
+
 
 /*
 $.getJSON(foursquareApi, function(data){
