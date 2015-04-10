@@ -1,6 +1,6 @@
 
 
-// All this should be in the view at some point probably
+// All this should be in the view at some point probably...??
 
 function initMap() {
 	var mapOptions = {
@@ -50,7 +50,9 @@ function loadScript() {
 
 window.onload = loadScript;
 
-var markers = [];
+
+// So maybe make this an observable array...
+var markers = ko.observableArray([]);
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
 
@@ -66,16 +68,13 @@ var initialPlaces = [
 		name: 'Brooklyn Roasting Co.',
 		latitude: '40.704334',
 		longitude: '-73.986524'
+	},
+	{
+		name: 'Prospect Park',
+		latitude: '40.661034',
+		longitude: '-73.968876'
 	}
 ];
-
-
-
-/*
-$.getJSON(foursquareApi, function(data){
-	$
-})
-*/
 
 // Here defining a "Place" so that the ViewModel can connect to the Model...
 
@@ -98,11 +97,6 @@ var ViewModel = function() {
 	this.setPlace = function(clickedPlace) {
 		self.currentPlace(clickedPlace);
 	};
-
-	// Here is the new stuff added on to ViewModel...map and stuff
-
-	// http://stackoverflow.com/questions/15531390/adding-array-of-markers-in-google-map
-	//...all was moved to initmap
 };
 
 ko.applyBindings(new ViewModel());
