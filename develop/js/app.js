@@ -5,7 +5,9 @@
 function initMap() {
 	var mapOptions = {
 		center: { lat: 40.675087, lng: -73.975524},
-		zoom: 12
+		zoom: 12,
+		// Added this because that guy did...TODO: look up what it's doing
+		disableDefaultUI: true
 	};
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -34,6 +36,20 @@ function initMap() {
 
 	google.maps.event.addDomListener(window, 'load', initMap);
 };
+
+/* http://softwarewalker.com/2014/05/07/using-google-maps-in-a-responsive-design/
+ * This resizes the map
+ */
+function resizeBootstrapMap() {
+    var mapParentWidth = $('#mapContainer').width();
+    $('#map-canvas').width(mapParentWidth);
+    $('#map-canvas').height(3 * mapParentWidth / 4);
+    google.maps.event.trigger($('#map-canvas'), 'resize');
+    console.log(mapParentWidth);
+}
+
+// resize the map whenever the window resizes
+$(window).resize(resizeBootstrapMap);
 
 // Triggers the marker click, 'id' is the reference index to the 'markers' array.
 // http://stackoverflow.com/questions/18333679/google-maps-open-info-window-after-click-on-a-link
@@ -97,6 +113,10 @@ var ViewModel = function() {
 	this.setPlace = function(clickedPlace) {
 		self.currentPlace(clickedPlace);
 	};
+	/*
+	 * Create a thing to hold search entry
+	 */
+	this.searchEntry = ko.observable('things will go here one day...ok?')
 };
 
 ko.applyBindings(new ViewModel());
