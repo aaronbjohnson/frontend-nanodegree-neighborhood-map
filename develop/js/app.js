@@ -1,5 +1,8 @@
 
 
+// So maybe make this an observable array...
+var markers = ko.observableArray([]);
+
 // All this should be in the view at some point probably...??
 
 function initMap() {
@@ -67,8 +70,6 @@ function loadScript() {
 window.onload = loadScript;
 
 
-// So maybe make this an observable array...
-var markers = ko.observableArray([]);
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
 
