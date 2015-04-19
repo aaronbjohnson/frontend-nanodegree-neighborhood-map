@@ -15,7 +15,15 @@ function initMap() {
 
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-	var infowindow = new google.maps.InfoWindow;
+	var infowindow = new google.maps.InfoWindow();
+/*
+	var contentString = function(m) {
+		infoWindowContent = '<div class="info-content">';
+		infoWindowContent += '<h4>' + initialPlaces[m].name + '</h4>';
+		infoWindowContent += '</div>';
+	};*/
+
+	//making the conent
 
 	var marker, i;
 
@@ -28,6 +36,7 @@ function initMap() {
 
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
+				//infowindow.setContent(contentString);
 				infowindow.setContent(initialPlaces[i].name);
 				infowindow.open(map, marker);
 			}
