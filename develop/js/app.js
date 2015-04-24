@@ -21,8 +21,6 @@ var Place = function(data) {
         map.panTo(marker.position);
         infowindow.open(map, marker);
         infowindow.setContent(titleString);
-        this.setPlace();
-        console.log(this.setPlace);////THIIIIISSSSSS MAKE THIS WORKKKKK
     });
 
     markers.push(marker);
@@ -132,6 +130,7 @@ var ViewModel = function() {
 
     this.setPlace = function(clickedPlace) {
         self.currentPlace(clickedPlace);
+        infowindow.open(map, marker);
     };
     /*
      * Create a thing to hold search entry
