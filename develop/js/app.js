@@ -27,8 +27,6 @@ var Place = function(data) {
 
     markers.push(marker);
 
-    console.log(this);
-
 };
 
 // So maybe make this an observable array...
