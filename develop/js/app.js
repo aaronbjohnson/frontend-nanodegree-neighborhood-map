@@ -1,3 +1,5 @@
+// So maybe make this an observable array...
+var gmarkers = [];
 
 
 // All this should be in the view at some point probably...??
@@ -28,17 +30,17 @@ function initMap() {
 			}
 		})(marker, i));
 
-		// Push the marker to the 'markers' array
-		markers.push(marker);
+		// Push the marker to the 'gmarkers' array
+		gmarkers.push(marker);
 	};
 
 	google.maps.event.addDomListener(window, 'load', initMap);
 };
 
-// Triggers the marker click, 'id' is the reference index to the 'markers' array.
+// Triggers the marker click, 'id' is the reference index to the 'gmarkers' array.
 // http://stackoverflow.com/questions/18333679/google-maps-open-info-window-after-click-on-a-link
 function myClick(id) {
-	google.maps.event.trigger(markers[id], 'click');
+	google.maps.event.trigger(gmarkers[id], 'click');
 };
 
 function loadScript() {
@@ -51,8 +53,6 @@ function loadScript() {
 window.onload = loadScript;
 
 
-// So maybe make this an observable array...
-var markers = ko.observableArray([]);
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/4075e780f964a52056f21ee3?client_id=3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
 
