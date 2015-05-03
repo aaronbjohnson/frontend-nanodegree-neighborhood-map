@@ -1,20 +1,23 @@
 // So maybe make this an observable array...
 var gmarkers = [];
-
+var map, infowindow, marker, places;
 
 // All this should be in the view at some point probably...??
 
+/* http://stackoverflow.com/questions/18333679/google-maps-open-info-window-after-click-on-a-link
+ * Reference for the var i and for loop to create markers
+ */ 
 function initMap() {
 	var mapOptions = {
 		center: { lat: 40.675087, lng: -73.975524},
 		zoom: 12
 	};
 
-	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-	var infowindow = new google.maps.InfoWindow;
+	infowindow = new google.maps.InfoWindow();
 
-	var marker, i;
+	var i;
 
 	for (i = 0; i < initialPlaces.length; i++) {
 		marker = new google.maps.Marker({
