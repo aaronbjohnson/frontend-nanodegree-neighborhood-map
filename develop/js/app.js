@@ -33,6 +33,18 @@ initialPlaces = [
         lat: 40.671207,
         lng: -73.963619,
         pinID: 4
+    },
+    {
+        name: 'Metropolitan Museum of Art',
+        lat: 40.779413,
+        lng: -73.963260,
+        pinID: 5
+    },
+    {
+        name: 'Lexington Candy Shop',
+        lat: 40.777467,
+        lng: -73.957295,
+        pinID: 6
     }
 ];
 
@@ -44,7 +56,7 @@ initialPlaces = [
 var initMap = function() {
     var mapOptions = {
         center: {lat: 40.675087, lng: -73.975524},
-        zoom: 12
+        zoom: 11
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -57,7 +69,8 @@ var initMap = function() {
     /*
      * Loop over the initialPlaces and create a Google Map marker for each item. 
      * Push these markers to the gmarkers array.
-     * http://stackoverflow.com/questions/15531390/adding-array-of-markers-in-google-map
+     * http://stackoverflow.com/questions/15531390/adding-array-of-markers-in- 
+     * google-map
      */
     var i;
     for (i = 0; i < initialPlaces.length; i++) {
@@ -149,7 +162,8 @@ var ViewModel = function() {
      */
     self.openWindow = function(initialPlaces) {
         var pin = gmarkers[initialPlaces.pinID];
-        var latLng = new google.maps.LatLng(initialPlaces.lat, initialPlaces.lng);
+        var latLng = new google.maps.LatLng(initialPlaces.lat, +
+            initialPlaces.lng);
 
         map.panTo(latLng);
         infowindow.open(map, pin);
