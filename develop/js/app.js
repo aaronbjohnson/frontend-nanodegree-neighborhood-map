@@ -55,8 +55,8 @@ initialPlaces = [
  */ 
 var initMap = function() {
     var mapOptions = {
-        center: {lat: 40.675087, lng: -73.975524},
-        zoom: 11
+        center: {lat: 40.722827, lng: -73.968343},
+        zoom: 12
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -95,7 +95,6 @@ var initMap = function() {
         gmarkers.push(marker);
     };
 }
-
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
     '3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=' + 
@@ -221,8 +220,6 @@ var ViewModel = function() {
         }
     }
 };
-
-
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
