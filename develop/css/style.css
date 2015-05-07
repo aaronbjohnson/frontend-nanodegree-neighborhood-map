@@ -33,6 +33,10 @@ body {
 	border-radius: 10px;
 }
 
-#place {
-	float: left;
+#list-item:hover {
+    cursor: pointer;
+}
+
+#list-title {
+    text-align: center;
 }

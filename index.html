@@ -10,19 +10,19 @@
 	<div class="map" id="map-canvas"></div>
 
 	<div id="places">
-		<h2>My Favorite Places</h2>
-		<div id="place-list" data-bind="foreach: placeList">
-			<h3 data-bind="text: $data.name, click: $parent.setPlace"></h3>
+		<h2 id="list-title">My Favorite Places</h2>
+		<div id="place-list" data-bind="foreach: filterList()">
+			<h3 id="list-item" data-bind="text: name, click: $parent.openWindow"></h3>
 		</div>
 	</div>
 
-	<div id="place" data-bind="with: currentPlace">
-		<h2 data-bind="text: name"></h2>
-	</div>
+    <form id="new-search">Search
+        <input autocomplete="on" type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
+    </form>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="develop/js/lib/knockout-3.3.0.js"></script>
-	<script type="text/javascript" src="develop/js/lib/jquery-1.11.2.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
 	<script type="text/javascript" src="develop/js/app.js"></script>
 </body>
 </html>
