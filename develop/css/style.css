@@ -1,13 +1,3 @@
-html {
-	height: 100%
-}
-
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
 #map-canvas {
     border: 2px solid black;
 }
@@ -33,10 +23,9 @@ body {
 }
 
 #place-list {
-	padding: 5px;
-	margin: 16px;
 	border: 5px solid black;
 	border-radius: 10px;
+    margin: 10px;
 }
 
 #list-item:hover {
