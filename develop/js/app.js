@@ -48,7 +48,7 @@ initialPlaces = [
     }
 ];
 
-/* 
+/**
  * http://stackoverflow.com/questions/18333679/google-maps-open-info-window-
  * after-click-on-a-link
  * Reference for making a loop to create markers
@@ -66,7 +66,7 @@ var initMap = function() {
     // Add image for custom map icon
     var image = 'develop/images/star.png';
 
-    /*
+    /**
      * Loop over the initialPlaces and create a Google Map marker for each item. 
      * Push these markers to the gmarkers array.
      * http://stackoverflow.com/questions/15531390/adding-array-of-markers-in- 
@@ -102,7 +102,7 @@ var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
 var googleStreetview = 'https://maps.googleapis.com/maps/api/streetview?size=' + 
     '300x150&location=';
 
-/*
+/**
  * Sends an API request to Foursquare and returns the venue's phone number, 
  * address, street number, city and country. This also sends a Google Street
  * View API request and returns a street view of that location based off of the 
@@ -154,7 +154,7 @@ var ViewModel = function() {
 
     self.filter = ko.observable('');
 
-    /* 
+    /**
      * Create a function that will open a marker's infowindow when the user 
      * clicks on an item from the list. Also, pans the map view to center on the
      * marker.
@@ -178,7 +178,7 @@ var ViewModel = function() {
         };
     }
 
-    /* 
+    /**
      * Function that uses Knockout's arrayFilter utility function to pass in the
      * placeList array and control which items are filtered based on the result
      * of the function -- executed on each placeList item -- that returns those
@@ -192,7 +192,7 @@ var ViewModel = function() {
         })
     }
 
-    /*
+    /**
      * After filtering the items, the displaySelected function calls setMap on 
      * those items -- which display's their markers on the map.
      */
@@ -202,7 +202,7 @@ var ViewModel = function() {
         };
     }
 
-    /*
+    /**
      * This function checks to see if there is anything to be filtered. If 
      * there's nothing to be filtered, it will display the entire item list.
      */

@@ -21,7 +21,7 @@
                 <div id="places">
                     <h2 id="list-title">My Favorite Places</h2>
                     <div id="place-list" data-bind="foreach: filterList()">
-                        <h3 id="list-item" data-bind="text: name, click: $parent.openWindow"></h3>
+                        <p id="list-item" data-bind="text: name, click: $parent.openWindow"></p>
                     </div>
                 </div>
             </div>
@@ -32,8 +32,9 @@
     </div>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
-	<script type="text/javascript" src="develop/js/app.js"></script>
+    <script async src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script async src="bower_components/knockout/dist/knockout.js"></script>
+	<script async src="production/js/app.min.js"></script>
+    <script async src="production/js/cssLoader.js"></script>
 </body>
 </html>

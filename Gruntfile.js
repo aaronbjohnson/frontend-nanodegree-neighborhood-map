@@ -8,12 +8,32 @@ module.exports = function(grunt) {
                     'production/js/app.min.js': ['develop/js/app.js']
                 }
             }
+        }, concat: {
+            options: {
+                separator: ';',
+            },
+            dist: {
+                src: ['bower_components/bootstrap/dist/css/bootstrap.min.css', 'develop/css/style.css'],
+                dest:'production/css/all.css',
+            },
+        }, cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'production/css/all.min.css': ['production/css/all.css']
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-newer');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['newer:uglify:js']);
+    grunt.registerTask('default', ['newer:uglify:js', 'newer:concat', 'newer:cssmin']);
 
 };
