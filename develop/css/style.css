@@ -9,21 +9,27 @@ body {
 }
 
 #map-canvas {
-	height: 100%;
-	float: left;
-	width: 70%;
-	margin: 5px;
+    border: 2px solid black;
 }
 
-#places {
-	position: fixed;
-	float: left;
-	top: 0;
-	right: 0;
-	width: 25%;
-	height: 50px;
-	margin: 5px;
-	padding: 5px;
+.map_container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.map_container .map_canvas{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.text-input {
+    font-size: large;
 }
 
 #place-list {

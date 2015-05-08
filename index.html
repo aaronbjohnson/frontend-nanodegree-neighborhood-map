@@ -4,22 +4,33 @@
 	<meta charset="UTF-8">
 	<title>Brooklyn</title>
 	<link rel="stylesheet" type="text/css" href="develop/css/style.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-	<div class="map" id="map-canvas"></div>
-
-	<div id="places">
-		<h2 id="list-title">My Favorite Places</h2>
-		<div id="place-list" data-bind="foreach: filterList()">
-			<h3 id="list-item" data-bind="text: name, click: $parent.openWindow"></h3>
-		</div>
-	</div>
-
-    <form id="new-search">Search
-        <input autocomplete="on" type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
-    </form>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <form id="new-search">Search
+                    <input autocomplete="on" type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div id="places">
+                    <h2 id="list-title">My Favorite Places</h2>
+                    <div id="place-list" data-bind="foreach: filterList()">
+                        <h3 id="list-item" data-bind="text: name, click: $parent.openWindow"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12 map_container">
+                <div class="map_container" id="map-canvas"></div>
+            </div>
+        </div>
+    </div>
+	
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>

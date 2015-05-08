@@ -100,7 +100,7 @@ var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
     '3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=' + 
     'NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
 var googleStreetview = 'https://maps.googleapis.com/maps/api/streetview?size=' + 
-    '400x200&location=';
+    '300x150&location=';
 
 /*
  * Sends an API request to Foursquare and returns the venue's phone number, 
