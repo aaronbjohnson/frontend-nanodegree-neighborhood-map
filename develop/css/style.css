@@ -43,6 +43,10 @@ body {
     cursor: pointer;
 }
 
+#list-item {
+    text-align: center;
+}
+
 #list-title {
     text-align: center;
 }

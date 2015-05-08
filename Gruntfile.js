@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 separator: ';',
             },
             dist: {
-                src: ['bower_components/bootstrap/dist/css/bootstrap.min.css', 'develop/css/style.css'],
+                src: ['develop/css/style.css', 'bower_components/bootstrap/dist/css/bootstrap.min.css'],
                 dest:'production/css/all.css',
             },
         }, cssmin: {
