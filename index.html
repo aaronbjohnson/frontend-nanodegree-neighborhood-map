@@ -18,14 +18,14 @@
         <div class="row">
             <div class="col-md-4 col-xs-12">
                 <div id="places">
-                    <h2 id="list-title">My Favorite Places</h2>
-                    <div id="place-list" data-bind="foreach: filterList()">
-                        <p id="list-item" data-bind="text: name, click: $parent.openWindow"></p>
+                    <h2 class="list-title">My Favorite Places</h2>
+                    <div class="place-list" data-bind="foreach: filterList()">
+                        <p class="list-item" data-bind="text: name, click: $parent.openWindow"></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-8 col-xs-12 map_container">
-                <div class="map_container" id="map-canvas"></div>
+                <div class="map_canvas" id="map-canvas"></div>
             </div>
         </div>
     </div>
