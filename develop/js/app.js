@@ -48,54 +48,6 @@ initialPlaces = [
     }
 ];
 
-/**
- * http://stackoverflow.com/questions/18333679/google-maps-open-info-window-
- * after-click-on-a-link
- * Reference for making a loop to create markers
- */ 
-var initMap = function() {
-    "use strict";
-    var mapOptions = {
-        center: {lat: 40.722827, lng: -73.968343},
-        zoom: 12
-    };
-
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-    infowindow = new google.maps.InfoWindow();
-
-    // Add image for custom map icon
-    var image = 'develop/images/star.png';
-
-    /**
-     * Loop over the initialPlaces and create a Google Map marker for each item. 
-     * Push these markers to the gmarkers array.
-     * http://stackoverflow.com/questions/15531390/adding-array-of-markers-in- 
-     * google-map
-     */
-    var i;
-    for (i = 0; i < initialPlaces.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(initialPlaces[i].lat, +
-                initialPlaces[i].lng),
-            title: initialPlaces[i].name,
-            map: map,
-            icon: image
-        });
-
-        google.maps.event.addListener(marker, 'click', (function(marker) {
-            return function() {
-                map.panTo(marker.position);
-                infowindow.setContent(marker.title + "<div id='content'></div>");
-                infowindow.open(map, marker);
-                apiRequest(marker);
-            };
-        })(marker));
-
-        // Push the marker to the 'gmarkers' array
-        gmarkers.push(marker);
-    }
-};
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
     '3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=' + 
@@ -156,6 +108,55 @@ var ViewModel = function() {
     self.markers = ko.observableArray(gmarkers);
 
     self.filter = ko.observable('');
+
+    /**
+     * http://stackoverflow.com/questions/18333679/google-maps-open-info-window-
+     * after-click-on-a-link
+     * Reference for making a loop to create markers
+     */ 
+    function createMap() {
+      
+        var mapOptions = {
+            center: {lat: 40.722827, lng: -73.968343},
+            zoom: 12
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        infowindow = new google.maps.InfoWindow();
+
+        // Add image for custom map icon
+        var image = 'develop/images/star.png';
+
+        /**
+         * Loop over the initialPlaces and create a Google Map marker for each item. 
+         * Push these markers to the gmarkers array.
+         * http://stackoverflow.com/questions/15531390/adding-array-of-markers-in- 
+         * google-map
+         */
+        var i;
+        for (i = 0; i < initialPlaces.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(initialPlaces[i].lat, +
+                    initialPlaces[i].lng),
+                title: initialPlaces[i].name,
+                map: map,
+                icon: image
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker) {
+                return function() {
+                    map.panTo(marker.position);
+                    infowindow.setContent(marker.title + "<div id='content'></div>");
+                    infowindow.open(map, marker);
+                    apiRequest(marker);
+                };
+            })(marker));
+
+            // Push the marker to the 'gmarkers' array
+            gmarkers.push(marker);
+        }
+    }
 
     /**
      * Create a function that will open a marker's infowindow when the user 
@@ -222,8 +223,7 @@ var ViewModel = function() {
             return filteredmarkers;
         }
     };
+    google.maps.event.addDomListener(window, 'load', createMap);
 };
-
-google.maps.event.addDomListener(window, 'load', initMap);
 
 ko.applyBindings(new ViewModel());
