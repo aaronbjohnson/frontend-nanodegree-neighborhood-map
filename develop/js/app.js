@@ -54,6 +54,7 @@ initialPlaces = [
  * Reference for making a loop to create markers
  */ 
 var initMap = function() {
+    "use strict";
     var mapOptions = {
         center: {lat: 40.722827, lng: -73.968343},
         zoom: 12
@@ -88,13 +89,13 @@ var initMap = function() {
                 infowindow.setContent(marker.title + "<div id='content'></div>");
                 infowindow.open(map, marker);
                 apiRequest(marker);
-            }
+            };
         })(marker));
 
         // Push the marker to the 'gmarkers' array
         gmarkers.push(marker);
-    };
-}
+    }
+};
 
 var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
     '3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=' + 
@@ -111,6 +112,7 @@ var googleStreetview = 'https://maps.googleapis.com/maps/api/streetview?size=' +
  */
 
 var apiRequest = function(marker) {
+    "use strict";
     var lat = marker.position.lat(); 
     var lng = marker.position.lng();
 
@@ -143,9 +145,10 @@ var apiRequest = function(marker) {
     }).error(function(err) {
         $windowContent.text('No information can be retrieved at this time.');
     });
-}
+};
 
 var ViewModel = function() {
+    "use strict";
     var self = this;
 
     self.placeList = ko.observableArray(initialPlaces);
@@ -168,15 +171,15 @@ var ViewModel = function() {
         infowindow.open(map, pin);
         infowindow.setContent(pin.title + '<div id="content"></div>');
         apiRequest(pin);
-    }
+    };
 
     // Function that will be used to turn the gmarkers on or off.
 
     self.toggleMarkers = function(toggle) {
         for (var i = 0; i < gmarkers.length; i++) {
             gmarkers[i].setMap(toggle);
-        };
-    }
+        }
+    };
 
     /**
      * Function that uses Knockout's arrayFilter utility function to pass in the
@@ -189,8 +192,8 @@ var ViewModel = function() {
     self.filterArray = function(filter) {
         return ko.utils.arrayFilter(self.placeList(), function(item) {
             return item.name.toLowerCase().indexOf(filter) >= 0;
-        })
-    }
+        });
+    };
 
     /**
      * After filtering the items, the displaySelected function calls setMap on 
@@ -199,8 +202,8 @@ var ViewModel = function() {
     self.displaySelected = function(filteredmarkers) {
         for (var i = 0; i < filteredmarkers.length; i++) {
             gmarkers[filteredmarkers[i].pinID].setMap(map);
-        };
-    }
+        }
+    };
 
     /**
      * This function checks to see if there is anything to be filtered. If 
@@ -212,13 +215,13 @@ var ViewModel = function() {
             self.toggleMarkers(map);
             return self.placeList();
         } else {
-            self.toggleMarkers(null)
+            self.toggleMarkers(null);
             var filteredmarkers = [];
             filteredmarkers = self.filterArray(filter);
             self.displaySelected(filteredmarkers);
             return filteredmarkers;
         }
-    }
+    };
 };
 
 google.maps.event.addDomListener(window, 'load', initMap);
