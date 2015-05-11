@@ -2,53 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brooklyn</title>
-    <link rel="stylesheet" type="text/css" href="develop/css/style.css">
-    <link rel="stylesheet" typehref="bower_components/bootstrap/dist/css/bootsrap.min.css">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYXJZc_ouALNulqbg9ZivoqNYDd2qJfVY&libraries=places&signed_in=true"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="develop/css/style.css">
 </head>
 
 <body>
+    <div class="map" data-bind="googlemap: { locations: locations, centerLat: 40.72, centerLon: -73.97 }"></div>
 
-    <div class="row">
-        <div class="col-md-8">
-            <hr>
-        </div>
-        <div class="col-md-4" id="search-header">
-            <form id="new-search">
-                <input type="text" class="text-input" data-bind="value: searchEntry">
-                <input type="submit" value="look for things" class="search-button" data-bind="">
-            </form>
-        </div>
-    </div>
+    <ul class="place-list" data-bind="foreach: locations">
+        <li data-bind="text: $data.name, css: { selected: $data == $root.chosenLocationId() }, click: $root.goToLocation"></li>
+    </ul>
 
-    <div class="row">
-        <div class="col-md-8" id="mapContainer">
-                <div class="map" id="map-canvas"></div>
-        </div><!--
-        <div class="col-md-4">
-            <div id="places">
-                <h2 id="list-title">FAVORITE PLACES</h2>
-                <hr>
-                <div id="place-list" data-bind="foreach: placeList">
-                    <h3 data-bind="text: $data.name, click: $parent.setPlace" id="list-item"></h3>
-                </div>
-            </div>
-        </div>-->
-    </div>
-
-
-<!--
-    <div id="place" data-bind="with: currentPlace">
-        <h2 data-bind="text: name"></h2>
-    </div>
--->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
-    <script type="text/javascript" src="develop/js/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <!--<script async src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script async src="bower_components/knockout/dist/knockout.js"></script>
+    <script async src="develop/js/app.js"></script>
 </body>
 </html>
