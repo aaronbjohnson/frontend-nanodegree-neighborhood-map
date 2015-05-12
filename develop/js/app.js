@@ -2,6 +2,58 @@ var map, infowindow;
 
 var gmarkers = [];
 
+var foursquareApi = 'https://api.foursquare.com/v2/venues/search?client_id=' +
+    '3P0CNNUW5YA1QIJAQUVRR0H4UI4FVASXURVLXGP4AOMAHXIM&client_secret=' + 
+    'NJFWJLYRXMAHO2W2F1SIGOTA5LMHMSUTGLM2XBRAXV5YMUBM&v=20150401';
+var googleStreetview = 'https://maps.googleapis.com/maps/api/streetview?size=' + 
+    '300x150&location=';
+
+
+
+
+
+var apiRequest = function(marker) {
+    "use strict";
+    var lat = marker.position.lat(); 
+    var lng = marker.position.lng();
+
+    var $windowContent = $('#content');
+
+    var url = foursquareApi + '&ll=' + lat + ',' + lng + '&query=\'' + 
+        marker.title + '\'&limit=1';
+
+    $.getJSON(url, function(response) {
+        var venue = response.response.venues[0];
+        var venuePhone = venue.contact.formattedPhone;
+        var venueAddress = venue.location.formattedAddress;
+        var venueStreet = venue.location.address;
+        var venueCity = venue.location.city;
+        var venueCountry = venue.location.country;
+        var venueLocation = venueStreet + venueCity + venueCountry;
+        var streetPhotoUrl = googleStreetview + venueLocation;
+
+        // Handles undefined error if phone number cannot be found
+        if (venuePhone === undefined) {
+            venuePhone = '<i>Could not find phone number for this location<i>';
+        } else {
+            venuePhone = venuePhone;
+        }
+
+        $windowContent.append('<p>' + venuePhone + '</p>');
+        $windowContent.append('<p>' + venueAddress + '</p>');
+        $windowContent.append('<img class="street-img" src="' + streetPhotoUrl +
+            '">');
+    }).error(function(err) {
+        $windowContent.text('No information can be retrieved at this time.');
+    });
+};
+
+
+
+
+
+    
+
 ko.bindingHandlers.googlemap = {
     init: function (element, valueAccessor) {
         var
@@ -56,14 +108,19 @@ var ViewModel = function() {
 
     self.markers = ko.observable(gmarkers);
     self.chosenLocationId = ko.observable();
+    // Define a chosenApiData property on ViewModel
+    self.chosenApiData = ko.observable();
     self.filter = ko.observable('');
 
     // Behaviors
 
     self.openWindow = function(locations) {
         self.chosenLocationId(locations);
+        // When user clicks on list item, populate chosenApiData by performing an Ajax request:
+        $.get(, {}, self.chosenApiData);
 
         var pin = gmarkers[locations.pinId];
+
         //var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
         //map.panTo(latLng);
         infowindow.open(map, pin);
