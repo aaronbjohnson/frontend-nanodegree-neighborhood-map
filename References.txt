@@ -1,0 +1,35 @@
+References:
+
+1. http://googlemaps.googlermania.com/google_maps_api_v3/en/map_example_sidebar.
+   html
+
+2. https://developers.google.com/maps/documentation/streetview/
+
+3. I referenced http://www.knockmeout.net/2011/04/utility-functions-in-
+   knockoutjs.html to implement a system of searching and filtering list items.
+
+4. https://developers.google.com/maps/documentation/javascript/markers
+
+5. Reference for making Google map view responsive http://stackoverflow.com/
+   questions/15668762/using-google-map-with-bootstrap-but-responsive-doesnt-work
+
+6. http://knockoutjs.com/documentation/introduction.html
+
+7. https://developers.google.com/maps/documentation/javascript/tutorial
+
+8. https://developer.foursquare.com/overview/
+
+// This is no longer used
+
+9. Referece for creating loop to make map markers http://stackoverflow.com/
+   questions/18333679/google-maps-open-info-window-after-click-on-a-link
+
+10. http://getbootstrap.com/getting-started/
+
+11. http://gruntjs.com/getting-started
+
+12. Referenced https://github.com/Renniesb/neighborhood-explorer to get ideas
+    for opening markers from list view
+
+13. For binding handler for Google Map http://testasoftware.com/steve/blog/
+    knockout-binding-handler-for-google-maps/

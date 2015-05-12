@@ -59,15 +59,12 @@ var ViewModel = function() {
     self.filter = ko.observable('');
 
     // Behaviors
-    self.goToLocation = function(location) {
-        self.chosenLocationId(location);
-    };
 
     self.openWindow = function(locations) {
+        self.chosenLocationId(locations);
 
         var pin = gmarkers[locations.pinId];
         //var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
-        console.log(map);
         //map.panTo(latLng);
         infowindow.open(map, pin);
         infowindow.setContent(pin.title + '<div id="content"></div>');
