@@ -13,7 +13,6 @@ ko.bindingHandlers.googlemap = {
             },
           map = new google.maps.Map(element, mapOptions);
 
-          // adding stuff
           infowindow = new google.maps.InfoWindow();
 
           var image = 'develop/images/star.png';
@@ -26,7 +25,7 @@ ko.bindingHandlers.googlemap = {
             var marker = new google.maps.Marker({
                 position: latLng,
                 map: map,
-                // adding here
+
                 title: value.locations()[l].name,
                 icon: image
             });
@@ -65,7 +64,7 @@ var ViewModel = function() {
     };
 
     self.openWindow = function(locations) {
-        //new trying
+
         var pin = gmarkers[locations.pinId];
         //var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
         console.log(map);
