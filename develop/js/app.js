@@ -8,6 +8,11 @@ ko.bindingHandlers.googlemap = {
             mapTypeId: google.maps.MapTypeId.ROADMAP
             },
           map = new google.maps.Map(element, mapOptions);
+
+          // adding stuff
+          infowindow = new google.maps.InfoWindow();
+
+          var image = 'develop/images/star.png';
           
         for (var l in value.locations())
         {
@@ -16,8 +21,22 @@ ko.bindingHandlers.googlemap = {
                             value.locations()[l].longitude);
             var marker = new google.maps.Marker({
                 position: latLng,
-                map: map
-              });
+                map: map,
+                // adding here
+                title: value.locations()[l].name,
+                icon: image
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker) {
+                return function() {
+                    map.panTo(marker.position);
+                    infowindow.setContent(marker.title + "<div id='content'></div>");
+                    infowindow.open(map, marker);
+                    apiRequest(marker);
+                };
+            })(marker));
+
+
         }
     }
 };
@@ -36,6 +55,13 @@ var ViewModel = function() {
     // Behaviors
     self.goToLocation = function(location) {
         self.chosenLocationId(location);
+        //new trying
+        var latlng = new google.maps.LatLng(locations.latitude, + locations.longitude);
+
+        map.panTo(latlng);
+        infowindow.open(map, chosenLocationId);
+        infowindow.setContent(chosenLocationId.title + '<div id="content"></div>');
+        apiRequest(chosenLocationId);
     };
 
     /* Create a thing*/
@@ -50,6 +76,8 @@ var ViewModel = function() {
         }
     }, self);
 /*
+// Search Function
+
     self.firstMatch = ko.computed(function() {
         var search = this.search().toLowerCase();
         if (!search) {
@@ -60,7 +88,6 @@ var ViewModel = function() {
             });
         }
     }, self);
-
 */
 };
     
