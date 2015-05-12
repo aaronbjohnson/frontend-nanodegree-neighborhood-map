@@ -8,9 +8,14 @@
 </head>
 
 <body>
+
+    <form id="new-search">Search
+        <input type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
+    </form>
+
     <div class="map" data-bind="googlemap: { locations: locations, centerLat: 40.72, centerLon: -73.97 }"></div>
 
-    <ul class="place-list" data-bind="foreach: locations">
+    <ul class="place-list" data-bind="foreach: filteredItems">
         <li data-bind="text: $data.name, css: { selected: $data == $root.chosenLocationId() }, click: $root.goToLocation"></li>
     </ul>
 

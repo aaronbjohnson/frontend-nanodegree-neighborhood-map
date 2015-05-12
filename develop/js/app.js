@@ -30,11 +30,38 @@ var ViewModel = function() {
         {name: "Brooklyn Roasting Co.", latitude: 40.704334, longitude: -73.986524}
     ]);
     self.chosenLocationId = ko.observable();
+    self.filter = ko.observable('');
+
 
     // Behaviors
     self.goToLocation = function(location) {
         self.chosenLocationId(location);
     };
-}
+
+    /* Create a thing*/
+    self.filteredItems = ko.computed(function() {
+        var filter = self.filter().toLowerCase();
+        if (!filter) {
+            return self.locations();
+        } else {
+            return ko.utils.arrayFilter(self.locations(), function(location) {
+                return location.name.toLowerCase().indexOf(filter) !== -1;
+            });
+        }
+    }, self);
+/*
+    self.firstMatch = ko.computed(function() {
+        var search = this.search().toLowerCase();
+        if (!search) {
+            return null;
+        } else {
+            return ko.utils.arrayFirst(this.filteredItems(), function(item) {
+                return location.name.toLowerCase().indexOf(search) !== -1;
+            });
+        }
+    }, self);
+
+*/
+};
     
 ko.applyBindings(new ViewModel());
