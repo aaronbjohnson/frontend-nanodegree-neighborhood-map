@@ -52,7 +52,7 @@ var apiRequest = function(marker) {
 
 
 
-    
+
 
 ko.bindingHandlers.googlemap = {
     init: function (element, valueAccessor) {
@@ -115,15 +115,27 @@ var ViewModel = function() {
     // Behaviors
 
     self.openWindow = function(locations) {
+        var lat = locations.latitude;
+        var lng = locations.longitude;
+        var pin = gmarkers[locations.pinId];
+
+        // Added this stuff in
+        var url = foursquareApi + '&ll=' + lat + ',' + lng + '&query=\'' + 
+            pin.title + '\'&limit=1';
+
+
         self.chosenLocationId(locations);
         // When user clicks on list item, populate chosenApiData by performing an Ajax request:
-        $.get(, {}, self.chosenApiData);
+        $.get(url, {}, self.chosenApiData);
 
-        var pin = gmarkers[locations.pinId];
+
 
         //var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
         //map.panTo(latLng);
         infowindow.open(map, pin);
+        // we may need to remove the <div===content>> stuff out of here because
+        // we may be putting this stuff on the View (HTML)...after all, that was
+        // our problem before right? Right?
         infowindow.setContent(pin.title + '<div id="content"></div>');
         // apiRequest(pin);
     };
