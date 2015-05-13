@@ -19,16 +19,12 @@ References:
 
 8. https://developer.foursquare.com/overview/
 
-// This is no longer used
+9. http://getbootstrap.com/getting-started/
 
-9. Referece for creating loop to make map markers http://stackoverflow.com/
-   questions/18333679/google-maps-open-info-window-after-click-on-a-link
+10. http://gruntjs.com/getting-started
 
-10. http://getbootstrap.com/getting-started/
+11. Referenced https://github.com/Renniesb/neighborhood-explorer to get ideas
+    for opening markers from list view and for displaying API data in infowindow
 
-11. http://gruntjs.com/getting-started
-
-12. Referenced https://github.com/Renniesb/neighborhood-explorer to get ideas
-    for opening markers from list view
-
-13. For binding handler for Google Map http://testasoftware.com/steve/blog/knockout-binding-handler-for-google-maps/
+12. For binding handler for Google Map http://testasoftware.com/steve/blog/
+    knockout-binding-handler-for-google-maps/
