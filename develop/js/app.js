@@ -15,11 +15,15 @@ var ViewModel = function() {
     
     self.locations = ko.observableArray([
         {name: "Soda Bar", latitude:40.678396 , longitude:-73.968349, pinId:0},
-        {name: "Brooklyn Roasting Co.", latitude: 40.704334, longitude: -73.986524, pinId:1}
+        {name: "Brooklyn Roasting Co.", latitude: 40.704334, longitude: -73.986524, pinId:1},
+        {name: "Prospect Park", latitude: 40.661034, longitude: -73.968876, pinId:2},
+        {name: "Brooklyn Public Library", latitude: 40.672371, longitude: -73.968254, pinId:3},
+        {name: "Brooklyn Museum", latitude: 40.671207, longitude: -73.963619, pinId:4},
+        {name: "Metropolitan Museum of Art", latitude: 40.779413, longitude: -73.963260, pinId:5},
+        {name: "Lexington Candy Shop", latitude: 40.777467, longitude: -73.957295, pinId:6}
     ]);
 
     self.markers = ko.observable(gmarkers);
-    self.chosenLocationId = ko.observable();
     self.filter = ko.observable('');
 
     // Behaviors
@@ -112,12 +116,6 @@ var ViewModel = function() {
         var lat = locations.latitude;
         var lng = locations.longitude;
         var pin = gmarkers[locations.pinId];
-
-        // Added this stuff in
-        var url = foursquareApi + '&ll=' + lat + ',' + lng + '&query=\'' + 
-            pin.title + '\'&limit=1';
-
-        self.chosenLocationId(locations);
 
         infowindow.open(map, pin);
         infowindow.setContent(pin.title + '<div id="content"></div>');
