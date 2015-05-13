@@ -31,5 +31,4 @@ References:
 12. Referenced https://github.com/Renniesb/neighborhood-explorer to get ideas
     for opening markers from list view
 
-13. For binding handler for Google Map http://testasoftware.com/steve/blog/
-    knockout-binding-handler-for-google-maps/
+13. For binding handler for Google Map http://testasoftware.com/steve/blog/knockout-binding-handler-for-google-maps/

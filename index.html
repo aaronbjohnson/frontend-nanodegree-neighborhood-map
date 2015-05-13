@@ -8,16 +8,28 @@
 </head>
 
 <body>
-
-    <form id="new-search">Search
-        <input type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
-    </form>
-
-    <div class="map" data-bind="googlemap: { locations: locations, centerLat: 40.72, centerLon: -73.97 }"></div>
-
-    <ul class="place-list" data-bind="foreach: filteredItems">
-        <li data-bind="text: $data.name, css: { selected: $data == $parent.chosenLocationId() }, click: $parent.openWindow"></li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form id="new-search">Search
+                    <input type="text" class="text-input" data-bind="value: filter, valueUpdate: 'keyup'">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div>
+                    <h2 class="list-title">My Favorite Places</h2>
+                    <ul class="place-list" data-bind="foreach: filteredItems">
+                        <p class="list-item" data-bind="text: $data.name, click: $parent.openWindow"></p>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8 col-xs-12 map_container">
+                <div class="map" data-bind="googlemap: { locations: locations, centerLat: 40.72, centerLon: -73.97 }"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script async src="bower_components/jquery/dist/jquery.min.js"></script>
