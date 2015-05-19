@@ -17,5 +17,5 @@ letters entered into a search bar above the map.
 
 I used the Knockout.js framework to keep the UI updated whenever the data model 
 is changed and to connect the Google map markers to their respective list items.
-I used the Bootstrap framework to make the overall layout reponsive on both 
+I used the Bootstrap framework to make the overall layout responsive on both 
 larger screens and on mobile screens.
