@@ -57,6 +57,7 @@ var ViewModel = function() {
 
             $windowContent.append('<p>' + venuePhone + '</p>');
             $windowContent.append('<p>' + venueAddress + '</p>');
+            $windowContent.append('<p class="credits">Venue information provided by Foursquare.<p>');
             $windowContent.append('<img class="street-img" src="' + streetPhotoUrl +
                 '">');
         }).error(function(err) {
