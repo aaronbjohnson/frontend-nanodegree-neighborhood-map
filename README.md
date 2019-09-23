@@ -2,7 +2,7 @@ Udacity Nanodegree Neighborhood Map Project
 ===========================================
 To view this site, simply click on the following link:
 ------------------------------------------------------
-http://aj65461.github.io/frontend-nanodegree-neighborhood-map/
+http://aaronbjohnson.github.io/frontend-nanodegree-neighborhood-map/
 
 ### Project Goals
 
